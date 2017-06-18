@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        
+    </head>
+    <body>
+        <div ng-repeat="entry in entries">
+            <div>
+                class="entry row-fluid">
+                <div class="span2"></div>
+                <div class="span2"></div>
+                <div class="span2"></div>
+                <div class="span2" style="display:none" showonhoverparent>
+                    <span ng-click="deleteEntry(entry)"><a class="btn btn-danger" href="#">Delete</a></span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            var directives = angular.module('directives', []);
+            directives.directive('showonhoverparent',
+            function() {
+      return {
+         link : function(scope, element, attrs) {
+            element.parent().bind('mouseenter', function() {
+                element.show();
+            });
+            element.parent().bind('mouseleave', function() {
+                 element.hide();
+            });
+       }
+   };
+});
+        </script>
+    </body>
+</html>
